@@ -8,28 +8,38 @@ import specialistStore from "../stores/specialistStore";
 // Importing observer
 import { observer } from "mobx-react";
 
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import {
   CreateButtonStyled,
-  ModalInput,
-  ModalInputDiv,
-  ModalLabels,
-  ClosingModalX,
+  InputDiv,
+  StyledInputTitle,
+  StyledInput,
+  Blur,
+  Wrapper,
+  Header,
+  Content,
+  ExitButton,
+  ModalTitle,
+  StyledSelect,
+  // ModalInput,
+  // ModalInputDiv,
+  // ModalLabels,
+  // ClosingModalX,
   ModalOption,
 } from "../styles";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    height: "260px",
-    overflow: "scroll",
-  },
-};
+// const customStyles = {
+//   content: {
+//     top: "50%",
+//     left: "50%",
+//     right: "auto",
+//     bottom: "auto",
+//     marginRight: "-50%",
+//     transform: "translate(-50%, -50%)",
+//     height: "260px",
+//     overflow: "scroll",
+//   },
+// };
 
 const ServiceSpecialistModal = ({
   isOpen,
@@ -61,35 +71,34 @@ const ServiceSpecialistModal = ({
     closeModal();
   };
 
+  const stopPropagation = (event) => {
+    event.stopPropagation();
+  };
+
   return (
     <>
       {isOpen ? (
-        <Modal
-          isOpen={isOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          ariaHideApp={false}
-          contentLabel="Example Modal"
-        >
-          <form onSubmit={handleSubmit}>
-            <ClosingModalX onClick={closeModal} />
-            <div>
-              <div>
-                <ModalLabels>Category name :</ModalLabels>
-                <ModalInputDiv>
-                  <ModalInput type="text" value={categoryId} />
-                </ModalInputDiv>
-              </div>
-              <div>
-                <ModalLabels> Service name :</ModalLabels>
-                <ModalInputDiv>
-                  <ModalInput type="text" value={serviceId} />
-                </ModalInputDiv>
-              </div>
-              <div>
-                <ModalLabels> Specialist name :</ModalLabels>
-                <ModalInputDiv>
-                  <select onChange={handleChange} name="specialistId">
+        <Blur onClick={closeModal}>
+          <Wrapper onClick={stopPropagation}>
+            <Header>
+              <ModalTitle> Assign Service </ModalTitle>
+              <ExitButton onClick={closeModal}>X</ExitButton>
+            </Header>
+
+            <Content>
+              <form onSubmit={handleSubmit}>
+                <InputDiv>
+                  <StyledInputTitle>Category name </StyledInputTitle>
+
+                  <StyledInput type="text" value={categoryId} />
+                </InputDiv>
+                <InputDiv>
+                  <StyledInputTitle>Service name</StyledInputTitle>
+                  <StyledInput type="text" value={serviceId} />
+                </InputDiv>
+                <InputDiv>
+                  <StyledInputTitle>Specialist name </StyledInputTitle>
+                  <StyledSelect onChange={handleChange} name="specialistId">
                     <ModalOption selected value>
                       Choose a specialist
                     </ModalOption>
@@ -98,21 +107,68 @@ const ServiceSpecialistModal = ({
                         {specialist.firstName} {specialist.lastName}
                       </ModalOption>
                     ))}
-                  </select>
-                </ModalInputDiv>
-              </div>
-            </div>
-            <CreateButtonStyled
-              className="btn float-right"
-              onSubmit={handleSubmit}
-            >
-              Assign
-            </CreateButtonStyled>
-          </form>
-        </Modal>
+                  </StyledSelect>
+                </InputDiv>
+                <CreateButtonStyled
+                  className="btn float-right"
+                  onSubmit={handleSubmit}
+                >
+                  Assign
+                </CreateButtonStyled>
+              </form>
+            </Content>
+          </Wrapper>
+        </Blur>
       ) : null}
     </>
   );
 };
 
 export default observer(ServiceSpecialistModal);
+
+// <Modal
+//   isOpen={isOpen}
+//   onRequestClose={closeModal}
+//   style={customStyles}
+//   ariaHideApp={false}
+//   contentLabel="Example Modal"
+// >
+//   <form onSubmit={handleSubmit}>
+//     <ClosingModalX onClick={closeModal} />
+//     <div>
+//       <div>
+//         <ModalLabels>Category name :</ModalLabels>
+//         <ModalInputDiv>
+//           <ModalInput type="text" value={categoryId} />
+//         </ModalInputDiv>
+//       </div>
+//       <div>
+//         <ModalLabels> Service name :</ModalLabels>
+//         <ModalInputDiv>
+//           <ModalInput type="text" value={serviceId} />
+//         </ModalInputDiv>
+//       </div>
+//       <div>
+//         <ModalLabels> Specialist name :</ModalLabels>
+//         <ModalInputDiv>
+//           <select onChange={handleChange} name="specialistId">
+//             <ModalOption selected value>
+//               Choose a specialist
+//             </ModalOption>
+//             {filteredSpecialist.map((specialist) => (
+//               <ModalOption value={specialist.id}>
+//                 {specialist.firstName} {specialist.lastName}
+//               </ModalOption>
+//             ))}
+//           </select>
+//         </ModalInputDiv>
+//       </div>
+//     </div>
+//     <CreateButtonStyled
+//       className="btn float-right"
+//       onSubmit={handleSubmit}
+//     >
+//       Assign
+//     </CreateButtonStyled>
+//   </form>
+// </Modal>

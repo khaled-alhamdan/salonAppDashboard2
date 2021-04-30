@@ -166,17 +166,19 @@ export const BackDetailButton = styled.button`
 
 export const CreateButtonStyled = styled.button`
   color: white;
-  background-color: black;
-  opacity: 70%;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 4px;
   padding: 6px 10px;
   outline: none;
   margin-top: 15px;
+  border: 1px solid white;
 
   :hover {
-    opacity: 100%;
     transition: 0.8s;
+    cursor: pointer;
+    background: white;
+    color: #463973;
   }
 `;
 
@@ -365,4 +367,113 @@ export const TitleStyle = styled.p`
 export const InfoStyle = styled.p`
   color: white;
   font-weight: bold;
+`;
+
+/////////////////////////////
+// Modal //
+/////////////////////////////
+
+export const InputDiv = styled.div`
+  width: 100%;
+  margin-top: 10px;
+`;
+export const StyledInputTitle = styled.label`
+  color: white;
+  display: block;
+  font-size: 18px;
+  line-height: 1;
+`;
+
+export const StyledInput = styled.input`
+  height: 25px;
+  max-width: 250px;
+  min-width: 350px;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+`;
+
+export const Blur = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 115vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  top: 55%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  @media (max-width: 760px) {
+    height: 150vh;
+  }
+`;
+
+export const Wrapper = styled.div`
+  position: fixed;
+  min-width: 30vw;
+  /* max-width: 60vw; */
+  /* min-height: 80vh; */
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8em;
+  padding: 5px 20px;
+  background: radial-gradient(
+    ellipse at left bottom,
+    rgba(22, 24, 47, 1) 0%,
+    rgba(38, 20, 72, 0.9) 59%,
+    rgba(17, 27, 75, 0.9) 100%
+  );
+`;
+
+export const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* padding-bottom: 2px; */
+  border-bottom: 1px solid grey;
+`;
+
+export const Content = styled.div`
+  overflow: scroll;
+  flex-grow: 1;
+`;
+
+export const ExitButton = styled.div`
+  margin-left: auto;
+  cursor: pointer;
+  color: white;
+`;
+
+export const ModalTitle = styled.h3`
+  color: white;
+`;
+
+export const StyledSelect = styled.select`
+  width: 300px;
+  height: 35px;
+  outline: none;
+  max-width: 260px;
+  min-width: 360px;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
 `;
