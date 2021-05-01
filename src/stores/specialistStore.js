@@ -27,7 +27,9 @@ class SpecialistStore {
       for (const key in newSpecialist) formData.append(key, newSpecialist[key]);
       const res = await instance.post(`/specialists`, formData);
       this.specialists.push(res.data);
+      console.log(res.data);
       this.loading = false;
+      // this.fetchSpecialists();
     } catch (error) {
       console.log(error);
     }

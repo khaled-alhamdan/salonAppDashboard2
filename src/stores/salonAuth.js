@@ -71,8 +71,6 @@ class SalonAuth {
       const asalon = this.salons.find((asalon) => asalon.id === updateSalon.id);
       for (const key in asalon) asalon[key] = updateSalon[key];
       for (const key in this.salon) this.salon[key] = updateSalon[key];
-      console.log("asalon", asalon);
-      console.log("this.salon", this.salon);
       this.loading = false;
     } catch (error) {
       console.log(error);

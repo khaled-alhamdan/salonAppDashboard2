@@ -41,12 +41,6 @@ const Content = styled.div`
   flex-grow: 1;
 `;
 
-const Footer = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  margin-top: auto;
-`;
-
 const ExitButton = styled.div`
   margin-left: auto;
   cursor: pointer;

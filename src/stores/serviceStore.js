@@ -24,12 +24,13 @@ class ServiceStore {
   createServiceForCategory = async (newService, categoryId) => {
     try {
       this.loading = true;
-      const res = await instance.post(
+      await instance.post(
         `/services/${categoryId.replace("category", "")}`,
         newService
       );
-      this.services.push(res.data);
-      this.loading = false;
+      // this.services.push(res.data);
+      // this.loading = false;
+      this.fetchServices();
     } catch (error) {
       console.log(error);
     }
@@ -66,12 +67,14 @@ class ServiceStore {
 
   assignServiceToSpecialist = async (assign, serviceId) => {
     try {
-      const res = await instance.post(
+      this.loading = true;
+      await instance.post(
         `/services/${serviceId}/${assign.specialistId}`,
         assign
       );
-      this.services.push(res.data);
-      this.loading = false;
+      // this.services.push(res.data);
+      // this.loading = false;
+      this.fetchServices();
     } catch (error) {
       console.log(error);
       alert("Action was not successful");

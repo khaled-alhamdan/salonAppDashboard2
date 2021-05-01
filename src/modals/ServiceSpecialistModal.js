@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import salonAuth from "../stores/salonAuth";
 // Importing service store
 import serviceStore from "../stores/serviceStore";
+// Importing categoryStore
+import categoryStore from "../stores/categoryStore";
 // Importing specialist store
 import specialistStore from "../stores/specialistStore";
 // Importing observer
@@ -48,8 +50,16 @@ const ServiceSpecialistModal = ({
   categoryId,
 }) => {
   const [serviceSpecialist, setServiceSpecialist] = useState({
-    specialistId: null,
+    specialistId: "",
   });
+
+  const foundCategory = categoryStore.categories.find(
+    (category) => category.id === +categoryId
+  );
+
+  const foundService = serviceStore.services.find(
+    (service) => service.id === +serviceId
+  );
 
   const handleChange = (event) => {
     setServiceSpecialist({
@@ -90,11 +100,11 @@ const ServiceSpecialistModal = ({
                 <InputDiv>
                   <StyledInputTitle>Category name </StyledInputTitle>
 
-                  <StyledInput type="text" value={categoryId} />
+                  <StyledInput type="text" value={foundCategory.name} />
                 </InputDiv>
                 <InputDiv>
                   <StyledInputTitle>Service name</StyledInputTitle>
-                  <StyledInput type="text" value={serviceId} />
+                  <StyledInput type="text" value={foundService.name} />
                 </InputDiv>
                 <InputDiv>
                   <StyledInputTitle>Specialist name </StyledInputTitle>

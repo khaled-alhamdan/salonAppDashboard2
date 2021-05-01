@@ -173,6 +173,7 @@ export const CreateButtonStyled = styled.button`
   outline: none;
   margin-top: 15px;
   border: 1px solid white;
+  margin-bottom: 10px;
 
   :hover {
     transition: 0.8s;
@@ -320,7 +321,7 @@ export const IconsWrapper = styled.div`
 
 export const InfoWrapper = styled.div`
   display: flex;
-  width: 96%;
+  width: 100%;
   height: 98%;
   /* background-color: red; */
   margin-top: 20px;
@@ -340,10 +341,15 @@ export const InfoContainer = styled.div`
   align-items: center;
   grid-template-columns: repeat(2, auto);
   gap: 10px;
-  width: 90%;
+  width: 95%;
   height: 100%;
   overflow: scroll;
   /* background-color: yellow; */
+  @media (max-width: 760px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -377,6 +383,7 @@ export const InputDiv = styled.div`
   width: 100%;
   margin-top: 10px;
 `;
+
 export const StyledInputTitle = styled.label`
   color: white;
   display: block;
@@ -476,4 +483,40 @@ export const StyledSelect = styled.select`
   border-radius: 5px;
   outline: none;
   border: none;
+`;
+
+/////////////////
+// profile styling //
+/////////////////
+
+export const ProfileFeildTitle = styled.label`
+  color: #fff;
+  display: block;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+`;
+
+export const ProfileInputFeildDiv = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 25px;
+  width: 200px;
+  overflow: scroll;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+`;
+
+export const ProfileInputFeildValue = styled.label`
+  color: grey;
+  display: block;
+  font-size: 16px;
+  line-height: 1;
+  margin-top: 5px;
+  letter-spacing: 0.5px;
 `;
