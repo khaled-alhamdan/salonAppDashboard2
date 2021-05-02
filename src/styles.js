@@ -61,7 +61,7 @@ export const ItemWrapper = styled.div`
 `;
 
 export const ItemNameWrapper = styled.div`
-  width: 180px;
+  width: 300px;
   /* background-color: pink; */
   cursor: pointer;
 `;
